@@ -1,0 +1,19 @@
+.container{
+  background-color: azure;
+  border-radius: 10px;
+  margin-top:80px;
+  max-width:350px;
+  height: 480px;
+}
+h2{
+  color: dodgerblue;
+  text-align: center;
+  padding-top: 10px;
+}
+i{
+  background-color: dodgerblue;
+  color: white;
+}
+input, label{
+  padding: 4px;
+}

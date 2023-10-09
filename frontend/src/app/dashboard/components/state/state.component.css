@@ -1,0 +1,16 @@
+.table-header{
+  display: inline-flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+i{
+  padding: 5px 8px;
+}
+button{
+  padding: 5px;
+  margin: 5px;
+}
+thead, tbody, tr, td, th{
+  border: solid 1px black;
+  padding: 10px;
+}

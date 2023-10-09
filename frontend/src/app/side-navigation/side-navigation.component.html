@@ -1,0 +1,17 @@
+<nav class="side-nav" [class.active]="isNavActive">
+  <ul>
+    <li><a routerLink="/dashboard" (click)="showPersonalDetailsForm()"><i class="bi bi-windows"></i> Dashboard</a></li>
+    <li>
+      <a routerLink="/master" (click)="onClickMasterLink()">
+        <i class="bi bi-globe" style="margin: 3px;"></i>
+        Master
+      </a>
+     <ul *ngIf="showLinks" [class.active]="showLinks" [ngClass]="{'open':showLinks}">
+       <li><a routerLink="/dashboard/countries" class="nav-link">Country</a></li>
+       <li><a routerLink="/dashboard/states" class="nav-link">State</a></li>
+       <li><a routerLink="/dashboard/cities" class="nav-link">City</a></li>
+      </ul>
+    </li>
+    <li><a href="myprofile"> <i class="bi bi-person-circle"></i> My Profile</a></li>
+  </ul>
+</nav>

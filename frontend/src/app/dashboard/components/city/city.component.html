@@ -1,0 +1,162 @@
+<div style="display: flex; justify-content: space-between;padding: 10px;">
+  <h3>City Table</h3>
+  <button class="btn btn-primary" (click)="openAddModal()">Add</button>
+</div>
+<div>
+  <p-table #ct [value]="cities" sortMode="multiple" [paginator]="true" [rows]="3" styleClass="p-datatable-gridlines"
+    [tableStyle]="{'min-width': '50rem'}">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="countryName" style="width: 22%;">Country Name <p-sortIcon field="countryName"
+            name="countryName"></p-sortIcon></th>
+        <th pSortableColumn="stateName" style="width: 22%;">State Name <p-sortIcon field="stateName"
+            name="stateName"></p-sortIcon></th>
+        <th pSortableColumn="name" style="width: 22%;">City Name <p-sortIcon field="name" name="name"></p-sortIcon></th>
+        <th pSortableColumn="description" style="width:22%">Description <p-sortIcon field="description"
+            name="description"></p-sortIcon></th>
+        <th pSortableColumn="action" style="width: 22%;">Action<p-sortIcon field="action" name="action"></p-sortIcon>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <p-columnFilter type="text" field="countryName" id="countryName"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="stateName" id="stateName"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="name" id="name"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="description" id="description"></p-columnFilter>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-city>
+      <tr>
+        <td>{{city.countryName}}</td>
+        <td>{{city.stateName}}</td>
+        <td>{{city.name}}</td>
+        <td>{{city.description}}</td>
+        <td>
+          <i class="pi pi-eye" style="color: dodgerblue;padding: 8px;" (click)="ViewCity(city)"></i>
+          <i class="pi pi-pencil" style="color:green;padding: 8px;" (click)="EditCity(city)"></i>
+          <i class="pi pi-trash" style="color: red;padding: 8px;" (click)="DeleteCity(city)"></i>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<div class="modal" tabindex="-1" *ngIf="isViewModalOpen" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">City Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeViewModal()"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Country Name: </strong>{{selectedCity?.countryName}}</p>
+        <p><strong>State Name: </strong>{{selectedCity?.stateName}}</p>
+        <p><strong>City Name: </strong>{{selectedCity?.name}}</p>
+        <p><strong>Description: </strong>{{selectedCity.description}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeViewModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" *ngIf="isEditModalOpen" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit City</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeEditModal()"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #editform="ngForm" (ngSubmit)="saveEditedCity()">
+          <div class="form-group">
+            <label for="editCountryName">Country Name</label>
+            <input type="text" class="form-control" id="editCountryName" [(ngModel)]="selectedCity.countryName" />
+          </div>
+          <div class="form-group">
+            <label for="editStateName">State Name</label>
+            <input type="text" class="form-control" id="editStateName" [(ngModel)]="selectedCity.stateName" />
+          </div>
+          <div class="form-group">
+            <label for="editCityName">City Name</label>
+            <input type="text" class="form-control" id="editCityName" [(ngModel)]="selectedCity.name" />
+          </div>
+          <div class="form-group">
+            <label for="editDescription">Description</label>
+            <input type="text" class="form-control" id="editDescription" [(ngModel)]="selectedCity.description" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeEditModal()">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="saveEditedCity()">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" *ngIf="isAddModalOpen" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Add New City</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeAddModal()"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="addCountryName">Country Name</label>
+        <input type="text" class="form-control" id="addCountryName" [(ngModel)]="addCity.countryName" />
+      </div>
+      <div class="modal-body">
+        <label for="addStateName">State Name</label>
+        <input type="text" class="form-control" id="addStateName" [(ngModel)]="addCity.stateName" />
+      </div>
+      <div class="modal-body">
+        <label for="addCityName">City Name</label>
+        <input type="text" class="form-control" id="addCityName" [(ngModel)]="addCity.name" />
+      </div>
+      <div class="modal-body">
+        <label for="addDescription">Description</label>
+        <input type="text" class="form-control" id="addDescription" [(ngModel)]="addCity.description" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeAddModal()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="addNewCity()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" *ngIf="isDeleteModalopen" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Delete City</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeDeleteModal()"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this record?</p>
+        <p><strong>Country Name: </strong>{{selectedCity.countryName}}</p>
+        <p><strong>State Name: </strong>{{selectedCity.stateName}}</p>
+        <p><strong>City Name: </strong>{{selectedCity.name}}</p>
+        <p><strong>Description: </strong>{{selectedCity.description}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeDeleteModal()">No</button>
+        <button type="button" class="btn btn-primary" (click)="DeleteRecord()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

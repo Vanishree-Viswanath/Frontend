@@ -1,0 +1,286 @@
+<div style="padding: 8px;">
+  <h2>Enter your personal details here!!!</h2>
+  <form [formGroup]="personalForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label for="firstname">First Name <span class="text-danger">*</span></label>
+        <div class="input-group">
+          <input type="text" formControlName="firstname" id="firstname" class=" form-control">
+          <i class="bi bi-person input-group-text"></i>
+        </div>
+        <div
+          *ngIf="personalForm.controls['firstname'].invalid && (personalForm.controls['firstname'].dirty || personalForm.controls['firstname'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['firstname'].errors?.['required']">First Name is
+            required.</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="middlename">Middle Name</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="middlename" formControlName="middlename">
+          <i class="bi bi-person input-group-text"></i>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="lastname">Last Name <span class="text-danger">*</span></label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="lastname" formControlName="lastname">
+          <i class="bi bi-person input-group-text"></i>
+        </div>
+        <div
+          *ngIf="personalForm.controls['lastname'].invalid && (personalForm.controls['lastname'].dirty || personalForm.controls['lastname'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['lastname'].errors?.['required']">Last Name is
+            required.</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="dateofbirth">Date Of Birth <span class="text-danger">*</span></label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="dateofbirth" formControlName="dateofbirth">
+          <i class="bi bi-calendar input-group-text"></i>
+        </div>
+        <div
+          *ngIf="personalForm.controls['dateofbirth'].invalid && (personalForm.controls['dateofbirth'].dirty || personalForm.controls['dateofbirth'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['dateofbirth'].errors?.['required']">Date of Birth is
+            required.</small>
+          <small class="text-danger" *ngIf="personalForm.controls['dateofbirth'].errors?.['dateofbirth']">Enter a valid
+            date.</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="age">Age <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" formControlName="age" id="age">
+        <div
+          *ngIf="personalForm.controls['age'].invalid && (personalForm.controls['age'].dirty || personalForm.controls['age'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['age'].errors?.['required']">Age is required.</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label id="gender">Gender <span class="text-danger">*</span></label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="male" value="male" name="gender" formControlName="gender">
+          <label class="form-check-label" for="male">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="female" value="female" name="gender"
+            formControlName="gender">
+          <label class="form-check-label" for="female">Female</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="other" value="other" name="gender" formControlName="gender">
+          <label class="form-check-label" for="other">Other</label>
+        </div>
+        <div
+          *ngIf="personalForm.controls['gender'].invalid && (personalForm.controls['gender'].dirty || personalForm.controls['gender'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['gender'].errors?.['required']">Gender is
+            required.</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="email">Email <span class="text-danger">*</span></label>
+        <div class="input-group">
+          <input type="email" class="form-control" id="email" formControlName="email" autocomplete="email">
+          <i class="bi bi-envelope input-group-text"></i>
+        </div>
+        <div
+          *ngIf="personalForm.controls['email'].invalid && (personalForm.controls['email'].dirty || personalForm.controls['email'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['email'].errors?.['required']">Email is
+            required.</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="mobilenum">Mobile Number <span class="text-danger">*</span></label>
+        <div class="input-group">
+          <input type="tel" class="form-control" id="mobilenum" formControlName="mobilenum">
+          <i class="bi bi-phone input-group-text"></i>
+        </div>
+        <div
+          *ngIf="personalForm.controls['mobilenum'].invalid && (personalForm.controls['mobilenum'].dirty || personalForm.controls['mobilenum'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['mobilenum'].errors?.['required']">
+            Mobile number is required
+          </small>
+          <small class="text-danger" *ngIf="personalForm.controls['mobilenum'].hasError('pattern')">
+            Please enter a valid mobile number.
+          </small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="address">Address <span class="text-danger">*</span></label><br>
+        <textarea name="address" cols="30" rows="1" class="form-control" id="address" formControlName="address"
+          autocomplete="address"></textarea>
+        <div
+          *ngIf="personalForm.controls['address'].invalid && (personalForm.controls['address'].dirty || personalForm.controls['address'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['address'].errors?.['required']">Address is
+            required.</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="country">Country <span class="text-danger">*</span></label><br>
+        <select class="custom-select form-control" id="country" formControlName="country" autocomplete="country">
+          <option selected></option>
+          <option value="india">India</option>
+          <option value="usa">USA</option>
+          <option value="australia">Australia</option>
+          <option value="japan">Japan</option>
+        </select>
+        <div
+          *ngIf="personalForm.controls['country'].invalid && (personalForm.controls['country'].dirty || personalForm.controls['country'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['country'].errors?.['required']">Country is
+            required.</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="state">State <span class="text-danger">*</span></label><br>
+        <select class="custom-select form-control" id="state" formControlName="state">
+          <option selected></option>
+          <option value="telangana">Telengana</option>
+          <option value="karnataka">Karnataka</option>
+          <option value="newyork">New York</option>
+          <option value="melbourne">Melbourne</option>
+        </select>
+        <div
+          *ngIf="personalForm.controls['state'].invalid && (personalForm.controls['state'].dirty || personalForm.controls['state'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['state'].errors?.['required']">State is
+            required.</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="city">City <span class="text-danger">*</span></label><br>
+        <select class="custom-select form-control" id="city" formControlName="city">
+          <option selected></option>
+          <option value="hyderabad">Hyderabad</option>
+          <option value="bengaluru">Bengaluru</option>
+          <option value="california">California</option>
+          <option value="sydney">Sydney</option>
+        </select>
+        <div
+          *ngIf="personalForm.controls['city'].invalid && (personalForm.controls['city'].dirty || personalForm.controls['city'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['city'].errors?.['required']">City is
+            required.</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="pincode">Pincode <span class="text-danger">*</span></label>
+        <input type="number" class="form-control" id="pincode" formControlName="pincode">
+        <div
+          *ngIf="personalForm.controls['pincode'].invalid && (personalForm.controls['pincode'].dirty || personalForm.controls['pincode'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['pincode'].errors?.['required']">Pincode is
+            required.</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="alternatenum">Alternate Number</label>
+        <div class="input-group">
+          <input type="tel" class="form-control" id="alternatenum" formControlName="alternatenum">
+          <i class="bi bi-phone input-group-text"></i>
+        </div>
+        <small class="text-danger" *ngIf="personalForm.controls['alternatenum'].hasError('pattern')">
+          Please enter a valid alternate number.
+        </small>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="emergencynum">Emergency Number <span class="text-danger">*</span></label>
+        <div class="input-group">
+          <input type="tel" class="form-control" id="emergencynum" formControlName="emergencynum">
+          <i class="bi bi-phone input-group-text"></i>
+        </div>
+        <div
+          *ngIf="personalForm.controls['emergencynum'].invalid && (personalForm.controls['emergencynum'].dirty || personalForm.controls['emergencynum'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['emergencynum'].errors?.['required']">Emergency Number
+            is required.</small>
+          <small class="text-danger" *ngIf="personalForm.controls['emergencynum'].hasError('pattern')">
+            Please enter a valid Emergency number.
+          </small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="bloodgroup">Blood Group</label>
+        <input type="text" class="form-control" id="bloodgroup" formControlName="bloodgroup">
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="passportavailable">Passport Available</label>
+        <input type="text" class="form-control" id="passportavailable" formControlName="passportavailable">
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="passportnum">Passport Number</label>
+        <input type="text" class="form-control" id="passportnum" formControlName="passportnum">
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="aadharnum">Aadhar Number <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="aadharnum" formControlName="aadharnum">
+        <div
+          *ngIf="personalForm.controls['aadharnum'].invalid && (personalForm.controls['aadharnum'].dirty || personalForm.controls['aadharnum'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['aadharnum'].errors?.['required']">Aadhar Number is
+            required.</small>
+          <small class="text-danger" *ngIf="personalForm.controls['aadharnum'].hasError('pattern')">
+            Please enter a valid Aadhar number.
+          </small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="drivinglicense">Driving License</label>
+        <input type="text" class="form-control" id="drivinglicense" formControlName="drivinglicense">
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="previousempid">Previous Employer Id</label>
+        <input type="text" class="form-control" id="previousempid" formControlName="previousempid">
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="previousempdetails">Previous Employer Details</label>
+        <input type="text" class="form-control" id="previousempdetails" formControlName="previousempdetails">
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="worklocation">Work Location <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="worklocation" formControlName="worklocation">
+        <div
+          *ngIf="personalForm.controls['worklocation'].invalid && (personalForm.controls['worklocation'].dirty || personalForm.controls['worklocation'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['worklocation'].errors?.['required']">Work Location is
+            required.</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="maritalstatus">Marital Status <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="maritalstatus" formControlName="maritalstatus">
+        <div
+          *ngIf="personalForm.controls['maritalstatus'].invalid && (personalForm.controls['maritalstatus'].dirty || personalForm.controls['maritalstatus'].touched)">
+          <small class="text-danger" *ngIf="personalForm.controls['maritalstatus'].errors?.['required']">Marital Status
+            is required. </small>
+        </div>
+      </div>
+
+      <div>
+        <button class="btn btn-primary" type="submit" [disabled]="personalForm.invalid">Submit</button>
+        <button class="btn btn-warning" style="margin: 10px;" (click)="resetForm()">Reset</button>
+      </div>
+    </div>
+    <div *ngIf="isFormSubmitted" class="alert alert-success" mt-3>
+      Form Submitted Successfully!
+      <button type="button" class="close" aria-label="Close" (click)="resetForm()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </form>
+</div>

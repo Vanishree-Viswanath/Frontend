@@ -1,0 +1,148 @@
+<div style="display: flex; justify-content: space-between;padding: 10px;">
+  <h4>State Table</h4>
+  <button class="btn btn-primary" (click)="openAddModal()">Add</button>
+</div>
+<div>
+  <p-table #st [value]="states" sortMode="multiple" [paginator]="true" [rows]="3" styleClass="p-datatable-gridlines"
+    [tableStyle]="{'min-width': '50rem'}">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="countryName" style="width: 22%;"> Country Name <p-sortIcon
+            field="countryName"></p-sortIcon> </th>
+        <th pSortableColumn="name" style="width: 22%;"> State Name <p-sortIcon field="name"></p-sortIcon> </th>
+        <th pSortableColumn="description" style="width: 22%;"> Description <p-sortIcon field="description"></p-sortIcon>
+        </th>
+        <th style="width: 22%;"> Actions</th>
+      </tr>
+      <tr>
+        <th>
+          <p-columnFilter type="text" field="countryName"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="name"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="description"></p-columnFilter>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-state>
+      <tr>
+        <td> {{state.countryName}}</td>
+        <td> {{state.name}}</td>
+        <td> {{state.description}}</td>
+        <td>
+          <i class="pi pi-eye" style="color: dodgerblue;" (click)="ViewState(state)"></i>
+          <i class="pi pi-pencil" style="color:green" (click)="EditState(state)"></i>
+          <i class="pi pi-trash" style="color: red;" (click)="DeleteState(state)"></i>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<div class="modal" tabindex="-1" *ngIf="isViewModalOpen" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">State Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeViewModal()"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Country Name: </strong>{{selectedState?.countryName}}</p>
+        <p><strong>State Name: </strong>{{selectedState?.name}}</p>
+        <p><strong>Description: </strong>{{selectedState?.description}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeViewModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" *ngIf="isEditModalOpen" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit State</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeEditModal()"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editForm" (ngSubmit)="saveEditedState()">
+          <div class="form-group">
+            <label for="editCountryName">Country Name</label>
+            <input type="text" class="form-control" id="editCountryName" formControlName="editCountryName" required>
+          </div>
+          <div class="form-group">
+            <label for="editStateName">State Name</label>
+            <input type="text" class="form-control" id="editStateName" formControlName="editStateName">
+          </div>
+          <div class="form-group">
+            <label for="editCountryDescription">Description</label>
+            <input type="text" class="form-control" id="editCountryDescription" formControlName="editCountryDescription"
+              required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeEditModal()">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="saveEditedState()">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" *ngIf="isAddModalOpen" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add New State</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeAddModal()"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="addCountryName">Country Name</label>
+          <input type="text" class="form-control" id="addCountryName" [(ngModel)]="addState.countryName">
+        </div>
+        <div class="form-group">
+          <label for="addStateName">State Name</label>
+          <input type="text" class="form-control" id="addStateName" [(ngModel)]="addState.name">
+        </div>
+        <div class="form-group">
+          <label for="addStateDescription">Description</label>
+          <input type="text" class="form-control" id="addStateDescription" [(ngModel)]="addState.description">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeAddModal()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="addNewState()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" *ngIf="isDeleteModalOpen" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Delete State</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeDeleteModal()"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this record?</p>
+        <p><strong>Country Name:</strong>{{selectedState?.countryName}}</p>
+        <p><strong>State Name:</strong>{{selectedState?.name}}</p>
+        <p><strong>Description:</strong>{{selectedState?.description}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeDeleteModal()">No</button>
+        <button type="button" class="btn btn-primary" (click)="DeleteRecord()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

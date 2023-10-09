@@ -1,0 +1,88 @@
+<h2 style="padding: 10px;">Enter Language details here!!!</h2>
+<form style="padding: 10px;" (ngSubmit)="onSubmit">
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="language1" style="padding: 5px;">Language1</label>
+        <select id="language1" class="form-control" [(ngModel)]="selectedLanguage" name="selectedLanguage">
+          <option value="english">English</option>
+          <option value="spanish">Spanish</option>
+          <option value="german">German</option>
+          <option value="french">French</option>
+        </select>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="read1" [(ngModel)]="read" name="read">
+        <label for="read1" class="form-check-label">Read</label>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="write1" [(ngModel)]="write" name="write">
+        <label for="write1" class="form-check-label">Write</label>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="speak1" [(ngModel)]="speak" name="speak">
+        <label for="speak1" class="form-check-label">Speak</label>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="language2" style="padding: 5px;">Language2</label>
+        <select id="language2" class="form-control" [(ngModel)]="selectedLanguage" name="selectedLanguage">
+          <option value="english">English</option>
+          <option value="spanish">Spanish</option>
+          <option value="german">German</option>
+          <option value="french">French</option>
+        </select>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="read2" [(ngModel)]="read" name="read">
+        <label for="read2" class="form-check-label">Read</label>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="write2" [(ngModel)]="write" name="write">
+        <label for="write2" class="form-check-label">Write</label>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="speak2" [(ngModel)]="speak" name="speak">
+        <label for="speak2" class="form-check-label">Speak</label>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="language3" style="padding: 5px;">Language3</label>
+        <select id="language3" class="form-control" [(ngModel)]="selectedLanguage" name="selectedLanguage">
+          <option value="english">English</option>
+          <option value="spanish">Spanish</option>
+          <option value="german">German</option>
+          <option value="french">French</option>
+        </select>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="read3" [(ngModel)]="read" name="read">
+        <label for="read3" class="form-check-label">Read</label>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="write3" [(ngModel)]="write" name="write">
+        <label for="write3" class="form-check-label">Write</label>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="speak3" [(ngModel)]="speak" name="speak">
+        <label for="speak3" class="form-check-label">Speak</label>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="certificate" style="margin: 10px;">Language Certificate Available</label>
+        <input type="text" class="form-control" id="certificate" [(ngModel)]="certificate" name="certificate">
+      </div>
+    </div>
+
+    <div class="form-group" style="display: flex; justify-content: right;">
+      <button type="submit" class="btn btn-primary" style="margin: 10px;">Save</button>
+      <button type="button" class="btn btn-danger" style="margin: 10px;">Cancel</button>
+    </div>
+  </div>
+</form>

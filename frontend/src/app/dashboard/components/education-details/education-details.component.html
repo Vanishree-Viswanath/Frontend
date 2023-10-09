@@ -1,0 +1,367 @@
+<h2 style="padding-left: 10px;">Enter Your education details here!!</h2>
+<form [formGroup]="educationForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="gDegreeName"><span class="text-danger">*</span> Graduation Degree Name </label>
+        <input type="text" class="form-control" formControlName="gDegreeName" id="gDegreeName"
+          placeholder="Enter your graduation degree">
+      </div>
+      <div
+        *ngIf="educationForm.controls['gDegreeName'].invalid && (educationForm.controls['gDegreeName'].dirty || educationForm.controls['gDegreeName'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['gDegreeName'].errors?.['required']">
+          Graduation degree name is required.
+        </small>
+      </div>
+    </div>
+
+    <div class=" col-md-4 mb-3">
+      <div class="form-group">
+        <label for="gUniversityName"><span class="text-danger">*</span> Graduation University Name </label>
+        <input type="text" class="form-control" formControlName="gUniversityName" id="gUniversityName"
+          placeholder="Enter your university name">
+      </div>
+      <div
+        *ngIf="educationForm.controls['gUniversityName'].invalid && (educationForm.controls['gUniversityName'].dirty || educationForm.controls['gUniversityName'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['gUniversityName'].errors?.['required']">
+          Graduation university name is required.
+        </small>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="gCollegeName"><span class="text-danger">*</span> Graduation College Name </label>
+        <input type="text" class="form-control" formControlName="gCollegeName" id="gCollegeName"
+          placeholder="graduation_college_name" style="width: 95%;">
+      </div>
+      <div
+        *ngIf="educationForm.controls['gCollegeName'].invalid && (educationForm.controls['gCollegeName'].dirty || educationForm.controls['gCollegeName'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['gCollegeName'].errors?.['required']">
+          Graduation college name is required.
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="gPassingYear"><span class="text-danger">*</span> Graduation Passing Year </label>
+        <input type="text" class="form-control" formControlName="gPassingYear" id="gPassingYear"
+          placeholder="Enter your graduation_passing_year">
+      </div>
+      <div
+        *ngIf="educationForm.controls['gPassingYear'].invalid && (educationForm.controls['gPassingYear'].dirty || educationForm.controls['gPassingYear'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['gPassingYear'].errors?.['required']">
+          Graduation passing year is required.
+        </small>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="gBacklogs"><span class="text-danger">*</span> Graduation Backlogs </label>
+        <input type="text" class="form-control" formControlName="gBacklogs" id="gBacklogs" placeholder="Enter Y/N">
+      </div>
+      <div
+        *ngIf="educationForm.controls['gBacklogs'].invalid && (educationForm.controls['gBacklogs'].dirty || educationForm.controls['gBacklogs'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['gBacklogs'].errors?.['required']">
+          Graduation backlogs is required.
+        </small>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="gBacklogsCleared"> Graduation Backlogs Clearedif </label>
+        <input type="text" class="form-control" formControlName="gBacklogsCleared" id="gBacklogsCleared"
+          placeholder="Enter Y/N">
+      </div>
+      <div
+        *ngIf="educationForm.controls['gBacklogsCleared'].invalid && (educationForm.controls['gBacklogsCleared'].dirty || educationForm.controls['gBacklogsCleared'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['gBacklogsCleared'].errors?.['required']">
+          Graduation backlogs cleared is required.
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="graduationCgpa"><span class="text-danger">*</span> Graduation CGPA </label>
+        <input type="text" formControlName="graduationCgpa" id="graduationCgpa" class="form-control"
+          placeholder="graduation_cgpa">
+      </div>
+      <div
+        *ngIf="educationForm.controls['graduationCgpa'].invalid && (educationForm.controls['graduationCgpa'].dirty || educationForm.controls['graduationCgpa'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['graduationCgpa'].errors?.['required']">
+          Graduation CGPA is required.</small>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="educationGap"><span class="text-danger">*</span> Education Gap </label>
+        <input type="text" class="form-control" formControlName="educationGap" id="educationGap"
+          placeholder="Enter education gap">
+      </div>
+      <div
+        *ngIf="educationForm.controls['educationGap'].invalid && (educationForm.controls['educationGap'].dirty || educationForm.controls['educationGap'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['educationGap'].errors?.['required']">Education Gap is
+          required.</small>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="educationGapDuration">Education Gap Duration</label>
+        <input type="text" class="form-control" formControlName="educationGapDuration" id="educationGapDuration"
+          placeholder="Select Education gap duration">
+      </div>
+      <div
+        *ngIf="educationForm.controls['educationGapDuration'].invalid && (educationForm.controls['educationGapDuration'].dirty || educationForm.controls['educationGapDuration'].touched)">
+        <small *ngIf="educationForm.controls['educationGapDuration'].errors?.['required']">
+          Education Gap duration is required.</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="pgDegree">Post Graduation Degree </label>
+        <input type="text" class="form-control" formControlName="pgDegree" id="pgDegree"
+          placeholder="Select your degree">
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="pgDegreeName">Post Graduation Degree Name</label>
+        <input type="text" class="form-control" formControlName="pgDegreeName" id="pgDegreeName"
+          placeholder="Select post_graduation_name">
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="pgUniversityName">Post Graduation University Name</label>
+        <input type="text" class="form-control" formControlName="pgUniversityName" id="pgUniversityName"
+          placeholder="post_graduation_university_name">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="pgCollegeName">Post Graduation College Name</label>
+        <input type="text" class="form-control" formControlName="pgCollegeName" id="pgCollegeName"
+          placeholder="post_graduation_college_name">
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="pgPassingYear">Post Graduation Passing Year</label>
+        <input type="text" class="form-control" formControlName="pgPassingYear" id="pgPassingYear"
+          placeholder="Enter your post_graduation_passing_year">
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="pgBacklogs">Post Graduation Backlogs</label>
+        <input type="text" class="form-control" formControlName="pgBacklogs" id="pgBacklogs" placeholder="Select Y/N">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="pgBacklogsCleared">Post Graduation Backlogs Clearedif</label>
+        <input type="text" class="form-control" formControlName="pgBacklogsCleared" id="pgBacklogsCleared"
+          placeholder="Select Y/N">
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="pgCgpa">Post Graduation CGPA</label>
+        <input type="text" class="form-control" formControlName="pgCgpa" id="pgCgpa" placeholder="post_graduation_CGPA">
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="pgEducationgap">Post Graduation Educationgap</label>
+        <input type="text" class="form-control" formControlName="pgEducationgap" id="pgEducationgap"
+          placeholder="Select post_graduation_educationgap">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="pgEducationgapDuration">Post Graduation Educationgap Duration</label>
+        <input type="text" class="form-control" formControlName="pgEducationgapDuration" id="pgEducationgapDuration"
+          placeholder="Select post_graduat_education_gap">
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="twelthStandard"><span class="text-danger">*</span>12th Standard</label>
+        <input type="text" class="form-control" formControlName="twelthStandard" id="twelthStandard"
+          placeholder="twelthStandard">
+      </div>
+      <div
+        *ngIf="educationForm.controls['twelthStandard'].invalid && (educationForm.controls['twelthStandard'].dirty || educationForm.controls['twelthStandard'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['twelthStandard'].errors?.['required']">
+          Twelth standard is required.
+        </small>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="twelthStandardSchoolName"><span class="text-danger">*</span> 12th Standard School Name</label>
+        <input type="text" class="form-control" formControlName="twelthStandardSchoolName" id="twelthStandardSchoolName"
+          placeholder="twelthStandard_school_name">
+      </div>
+      <div
+        *ngIf="educationForm.controls['twelthStandardSchoolName'].invalid && (educationForm.controls['twelthStandardSchoolName'].dirty || educationForm.controls['twelthStandardSchoolName'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['twelthStandardSchoolName'].errors?.['required']">
+          Twelth standard school name is required.
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="twelthStandardBoardName"><span class="text-danger">*</span>12th Standard Board Name</label>
+        <input type="text" class="form-control" formControlName="twelthStandardBoardName" id="twelthStandardBoardName"
+          placeholder="Select your tweth standard board name">
+      </div>
+      <div
+        *ngIf="educationForm.controls['twelthStandardBoardName'].invalid && (educationForm.controls['twelthStandardBoardName'].dirty || educationForm.controls['twelthStandardBoardName'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['twelthStandardBoardName'].errors?.['required']">
+          Twelth standard board name is required.
+        </small>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="twelthStandardPassingYear"><span class="text-danger">*</span>12th Standard Passing Year</label>
+        <input type="text" class="form-control" formControlName="twelthStandardPassingYear"
+          id="twelthStandardPassingYear" placeholder="Select your twelth standard passing year ">
+      </div>
+      <div
+        *ngIf="educationForm.controls['twelthStandardPassingYear'].invalid && (educationForm.controls['twelthStandardPassingYear'].dirty || educationForm.controls['twelthStandardPassingYear'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['twelthStandardPassingYear'].errors?.['required']">
+          Twelth standard passing year is required.
+        </small>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="twelthStandardCgpa"><span class="text-danger">*</span> 12th Standard CGPA/Percentage</label>
+        <input type="text" class="form-control" formControlName="twelthStandardCgpa" id="twelthStandardCgpa"
+          placeholder="twelth standard CGPA Percentage">
+      </div>
+      <div
+        *ngIf="educationForm.controls['twelthStandardCgpa'].invalid && (educationForm.controls['twelthStandardCgpa'].dirty || educationForm.controls['twelthStandardCgpa'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['twelthStandardCgpa'].errors?.['required']">
+          Twelth standard CGPA is required.
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="tenthStandard"><span class="text-danger">*</span>10th Standard</label>
+        <input type="text" class="form-control" formControlName="tenthStandard" id="tenthStandard"
+          placeholder="tenth standard">
+      </div>
+      <div
+        *ngIf="educationForm.controls['tenthStandard'].invalid && (educationForm.controls['tenthStandard'].dirty || educationForm.controls['tenthStandard'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['tenthStandard'].errors?.['required']">
+          Tenth standard is required.
+        </small>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="tenthStandardSchoolName"><span class="text-danger">*</span>10th Standard School Name</label>
+        <input type="text" class="form-control" formControlName="tenthStandardSchoolName" id="tenthStandardSchoolName"
+          placeholder="tenth standard school name">
+      </div>
+      <div
+        *ngIf="educationForm.controls['tenthStandardSchoolName'].invalid && (educationForm.controls['tenthStandardSchoolName'].dirty || educationForm.controls['tenthStandardSchoolName'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['tenthStandardSchoolName'].errors?.['required']">
+          Tenth standard school name is required.
+        </small>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="tenthStandardBoardName"><span class="text-danger">*</span> 10th Standard Board Name</label>
+        <input type="text" class="form-control" formControlName="tenthStandardBoardName" id="tenthStandardBoardName"
+          placeholder="Select your tenth standard board name">
+      </div>
+      <div
+        *ngIf="educationForm.controls['tenthStandardBoardName'].invalid && (educationForm.controls['tenthStandardBoardName'].dirty || educationForm.controls['tenthStandardBoardName'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['tenthStandardBoardName'].errors?.['required']">
+          Tenth standard board name is required.
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="tenthStandardPassingYear"><span class="text-danger">*</span>10th Standard Passing Year</label>
+        <input type="text" class="form-control" formControlName="tenthStandardPassingYear" id="tenthStandardPassingYear"
+          placeholder="Select your tenth standard passing year">
+      </div>
+      <div
+        *ngIf="educationForm.controls['tenthStandardPassingYear'].invalid && (educationForm.controls['tenthStandardPassingYear'].dirty || educationForm.controls['tenthStandardPassingYear'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['tenthStandardPassingYear'].errors?.['required']">
+          Tenth standard passing year is required.
+        </small>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label for="tenthStandardCgpa"><span class="text-danger">*</span>10th Standard CGPA/Percentage</label>
+        <input type="text" class="form-control" formControlName="tenthStandardCgpa" id="tenthStandardCgpa"
+          placeholder="tenth standard CGPA/Percentage">
+      </div>
+      <div
+        *ngIf="educationForm.controls['tenthStandardCgpa'].invalid && (educationForm.controls['tenthStandardCgpa'].dirty || educationForm.controls['tenthStandardCgpa'].touched)">
+        <small class="text-danger" *ngIf="educationForm.controls['tenthStandardCgpa'].errors?.['required']">
+          Tenth standard CGPA is required.
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: center;">
+    <button class="btn btn-success" style="margin: 4px;" type="submit" [disabled]="educationForm.invalid">Save</button>
+    <button class="btn btn-danger" style="margin: 4px;" (click)="resetForm()">Cancel</button>
+  </div>
+</form>

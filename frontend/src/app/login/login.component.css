@@ -1,0 +1,15 @@
+h3{
+  color:white;
+}
+.form-container{
+  background-color: aliceblue;
+  margin: 100px auto;
+  padding: 6px 8px;
+  width:400px;
+  height: 280px;
+  border-radius: 4px;
+}
+h4{
+  color: dodgerblue;
+  text-align: center;
+}

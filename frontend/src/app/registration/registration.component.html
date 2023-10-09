@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="col-md-12">
+    <h2>RegisterNow</h2>
+    <form style="margin: 10px;" #registrationForm="ngForm" (ngSubmit)="registerUser()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="username" [(ngModel)]="employees.userName" name="username"
+            #username="ngModel" required minlength="5" autocomplete="username">
+          <i class="bi bi-person input-group-text"></i>
+        </div>
+        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-danger">
+          <div *ngIf="username.errors?.['required']">Username is required.</div>
+          <div *ngIf="username.errors?.['minlength']">Username must be at least 5 characters long.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Id</label>
+        <div class="input-group">
+          <input type="email" class="form-control" id="email" [(ngModel)]="employees.emailId" name="email"
+            #email="ngModel" required email autocomplete="email">
+          <i class="bi bi-envelope input-group-text"></i>
+        </div>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+          <div *ngIf="email.errors?.['required']">Email is required.</div>
+          <div *ngIf="email.errors?.['email']">Invalid email format.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-group">
+          <input type="password" class="form-control" id="password" [(ngModel)]="employees.password" name="password"
+            #password="ngModel" required minlength="5">
+          <i class="bi bi-lock input-group-text"></i>
+        </div>
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+          <div *ngIf="password.errors?.['required']">Password is required.</div>
+          <div *ngIf="password.errors?.['minlength']">Password must be at least 8 characters long.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="cpassword">Confirm Password</label>
+        <div class="input-group">
+          <input type="cpassword" class="form-control" id="cpassword" [(ngModel)]="employees.password" name="cpassword"
+            #cpassword="ngModel" required>
+          <i class="bi bi-lock input-group-text"></i>
+        </div>
+        <div *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)" class="text-danger">
+          <div *ngIf="cpassword.errors?.['required']">Confirm Password is required.</div>
+          <div *ngIf="cpassword.value !== password.value">Passwords do not match.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="checkbox" id="termsCheckbox" name="termsCheckbox" [(ngModel)]="employees.termsCheckbox" required>
+        <label style="margin: 2px 2px;" for="termsCheckbox"> I read and agree to the terms</label>
+        <div *ngIf="employees?.['termsCheckbox && (termsCheckbox.dirty || termsCheckbox.touched)']" class="text-danger">
+          You must agree to the terms.
+        </div>
+      </div>
+
+      <div>
+        <button class="btn btn-primary" [disabled]="registrationForm.invalid">Register</button>
+        <button class="btn btn-warning" style="margin: 10px;" (click)="registrationForm.reset()">Reset</button>
+      </div>
+      <p>Already have an account? Please <a routerLink="/login" class="text-primary"
+          style="text-decoration: underline;">Login</a></p>
+    </form>
+  </div>
+</div>
